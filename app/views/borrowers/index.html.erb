@@ -1,0 +1,18 @@
+<h1>Welcome to The Book Library</h1>
+
+<div>
+  <%= link_to 'New User', new_borrower_path %>
+</div>
+
+<div>
+  <%= link_to 'Manage Books', books_path %>
+</div>
+
+<h2>List of Users</h2>
+<ul>
+  <% @borrowers.each do |borrower| %>
+    <li>
+      <%= link_to borrower.name, borrower %>
+    </li>
+  <% end %>
+</ul>

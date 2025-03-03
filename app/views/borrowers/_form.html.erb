@@ -1,0 +1,19 @@
+<%= form_with(model: borrower, local: true) do |form| %>
+    <% if borrower.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(borrower.errors.count, "error") %> prohibited this borrower from being saved:</h2>
+        <ul>
+          <% borrower.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Submit"   %>
+    </div>
+  <% end %>

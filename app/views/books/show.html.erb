@@ -1,0 +1,38 @@
+<h1><%= @book.title %></h1>
+<p>Author: <%= @book.author %></p>
+<p>
+  <% if @book.borrowed? %>
+    Currently Borrowed
+  <% else %>
+    Available
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
+
+<h2>Borrowing History</h2>
+<ul>
+  <% @book.lendings.each do |lending| %>
+    <li>
+      Borrowed by: <%= lending.borrower.name %>,
+      Borrowed at: <%= lending.borrowed_at %>,
+      Returned at: <%= lending.returned_at %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @book.borrowed? %>
+  <%= button_to 'Return', return_book_path(@book), method: :patch %>
+<% else %>
+  <h2>Borrow</h2>
+  <% if @borrowers.present? %>
+    <%= form_with url: borrow_book_path(@book), method: :post do |form| %>
+      <%= form.label :borrower_id, "Select Borrower" %>
+      <%= form.select :borrower_id, Borrower.all.collect { |b| [b.name, b.id] }, { prompt: "Select a Borrower" } %>
+      <%= form.submit "Borrow" %>
+    <% end %>
+  <% else %>
+      <p>No borrowers available. Please add a borrower.</p>
+  <% end %>
+<% end %>

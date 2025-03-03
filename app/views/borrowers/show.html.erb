@@ -1,0 +1,11 @@
+<h1>Borrower: <%= @borrower.name %></h1>
+<h2>Borrowing History</h2>
+<ul>
+  <% @borrower.lendings.each do |lending| %>
+    <li>
+      Book: <%= lending.book.title %>,
+      Borrowed at: <%= lending.borrowed_at %>,
+      Returned at: <%= lending.returned_at %>
+    </li>
+  <% end %>
+</ul>
