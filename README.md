@@ -11,8 +11,8 @@ This project shows the minimal core funtionality of a Library System in Ruby on 
 1. **Clone the repository:**
 
     ```bash
-    git clone <repository_url>
-    cd book_lending_library
+    git clone https://github.com/anzieri/BookLibrarySystem.git
+    cd book_library
     ```
 
 2. **Install dependencies:**
@@ -43,5 +43,4 @@ This project shows the minimal core funtionality of a Library System in Ruby on 
     ```bash
     bundle exec rspec spec
     ```
-
 
